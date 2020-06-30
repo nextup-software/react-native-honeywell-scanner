@@ -28,6 +28,7 @@ import com.honeywell.aidc.AidcManager.CreatedCallback;
 import com.honeywell.aidc.BarcodeFailureEvent;
 import com.honeywell.aidc.BarcodeReadEvent;
 import com.honeywell.aidc.BarcodeReader;
+import com.honeywell.aidc.ScannerNotClaimedException;
 import com.honeywell.aidc.ScannerUnavailableException;
 
 @SuppressWarnings("unused")
@@ -115,6 +116,21 @@ public class HoneywellScannerModule extends ReactContextBaseJavaModule implement
             manager.close();
         }
         promise.resolve(null);
+    }
+
+    @ReactMethod
+    public void toggleScannerEnabled(final boolean state) {
+        if (reader != null) {
+            try {
+                reader.softwareTrigger(state);
+            } catch (ScannerNotClaimedException e) {
+                e.printStackTrace();
+            } catch (ScannerUnavailableException e) {
+                e.printStackTrace();
+            }
+        } else {
+            Log.e(TAG, "HONEYWELLSCANNER - toggleScannerEnabled: Reader is null");
+        }
     }
 
     private boolean isCompatible() {
