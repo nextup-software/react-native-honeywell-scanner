@@ -121,13 +121,8 @@ public class HoneywellScannerModule extends ReactContextBaseJavaModule implement
     @ReactMethod
     public void toggleScannerEnabled(final boolean state) {
         if (reader != null) {
-            try {
-                reader.softwareTrigger(state);
-            } catch (ScannerNotClaimedException e) {
-                e.printStackTrace();
-            } catch (ScannerUnavailableException e) {
-                e.printStackTrace();
-            }
+            Log.i(TAG, "HONEYWELLSCANNER - toggleScannerEnabled");
+            reader.notify("THIS IS A NOTIFICATION");
         } else {
             Log.e(TAG, "HONEYWELLSCANNER - toggleScannerEnabled: Reader is null");
         }
