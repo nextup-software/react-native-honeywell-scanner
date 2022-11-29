@@ -1,7 +1,7 @@
 {
   "name": "@nextup/react-native-honeywell-scanner",
   "description": "A barcode scanner for Honeywell handheld devices like Honeywell Dolphin CT50",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "main": "index.js",
   "repository": "@nextup/react-native-honeywell-scanner",
   "keywords": [
