@@ -14,7 +14,8 @@
   },
   "files": [
     "android",
-    "index.js"
+    "index.js",
+    "types.d.ts"
   ],
   "types": "./types.d.ts",
   "license": "ISC",
